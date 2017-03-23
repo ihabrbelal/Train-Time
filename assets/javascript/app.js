@@ -49,7 +49,7 @@ database.ref().on("child_added", function(childSnapshot) {
         var destination = childSnapshot.val().destination;
         var frequency = childSnapshot.val().frequency;
         var firstTrain = childSnapshot.val().firstTrain;
-        var remainder = moment().diff(moment.unix(firstTrain) / "minutes") % frequency;
+        var remainder = moment().diff(moment.unix(firstTrain), "minutes") % frequency;
         var minutes = frequency - remainder;
         var arrival = moment().add(minutes, "m").format("hh:mm A");
         console.log(remainder);
